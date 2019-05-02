@@ -1,3 +1,16 @@
+/* Rock and Roll fonts downloaded for free from:
+* https://www.1001fonts.com/heavy-metal-fonts.html?page=1&items=10
+*/
+@font-face {
+  font-family: VTKSRockGarageBand;
+  src: url("fonts/VTKSROCKGARAGEBAND.ttf");
+}
+
+@font-face {
+  font-family: RockKapak;
+  src: url("fonts/ROCK_KAPAK_2.ttf");
+}
+
 html {
     box-sizing: border-box;
 }
@@ -17,8 +30,9 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+    background: #000;
+    font-family: 'RockKapak', 'Coda', cursive;
+    color: #a84a50;
 }
 
 .container {
@@ -29,8 +43,9 @@ body {
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'VTKSRockGarageBand', 'Open Sans', sans-serif;
     font-weight: 300;
+    color: #da1318;
 }
 
 /*
@@ -40,7 +55,7 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #a84a50 0%, #da1318 100%);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -63,6 +78,10 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card .image {
+  visibility: hidden;
 }
 
 .deck .card.open {
@@ -106,4 +125,8 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+footer {
+  text-align: center;
 }
