@@ -38,17 +38,19 @@ Thus, the following actions were performed in this provided order:
 1. Implemented my own design to game, with colors, fonts and images
 1. Created a deck of cards using the array approach
 1. Used provided shuffle function to array
-1. Added reload functionality (TBD)
-1. Added click functionalities (TBD)
-  1. flip (TBD)
-  1. flip animation (TBD)
-  1. unflip (TBD)
-  1. matched (TBD)
-  1. matched animation (TBD)
-  1. not matched (TBD)
-  1. not matched animation (TBD)
-  1. Limit to two cards flipped only (TBD)
-  1. Move counter (TBD)
+1. Added reload functionality
+1. Implemented game clock
+1. Added click functionalities
+  2. reload click
+  2. flip
+  2. flip animation (TBD)
+  2. unflip
+  2. matched
+  2. matched animation (TBD)
+  2. not matched
+  2. not matched animation (TBD)
+  2. Limit to two cards flipped only
+  2. Move counter
 1. Created game win condition and modal window (TBD)
-1. Implemented game clock (TBD)
 1. Implemented game stars logic (3 stars based on number of moves) (TBD)
+1. Adjusted responsive layout to small screens (TBD)
