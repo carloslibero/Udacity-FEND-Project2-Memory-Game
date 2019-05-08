@@ -3,12 +3,18 @@
 */
 @font-face {
   font-family: VTKSRockGarageBand;
-  src: url("fonts/VTKSROCKGARAGEBAND.ttf");
+  src: url(fonts/VTKSROCKGARAGEBAND.ttf);
 }
 
 @font-face {
   font-family: RockKapak;
-  src: url("fonts/ROCK_KAPAK_2.ttf");
+  src: url(fonts/ROCK_KAPAK_2.ttf);
+}
+
+/* Modal Animation */
+@keyframes animateModal {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
 }
 
 html {
@@ -37,6 +43,7 @@ body {
 
 .container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -44,8 +51,10 @@ body {
 
 h1 {
     font-family: 'VTKSRockGarageBand', 'Open Sans', sans-serif;
-    font-weight: 300;
     color: #da1318;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 /*
@@ -53,8 +62,9 @@ h1 {
  */
 
 .deck {
-    width: 660px;
+    width: 100%;
     min-height: 680px;
+    max-width: 600px;
     background: linear-gradient(160deg, #a84a50 0%, #da1318 100%);
     padding: 32px;
     border-radius: 10px;
@@ -69,6 +79,7 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
+    margin-bottom: 10px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -78,6 +89,7 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    flex-wrap: wrap;
 }
 
 .deck .card .image {
@@ -158,4 +170,74 @@ h1 {
 
 footer {
   text-align: center;
+}
+
+/* Styles applied to Modal Windows
+ * Based on provided examples from W3school available at:
+ * https://www.w3schools.com/howto/howto_css_modals.asp */
+
+/* Initial Modal container as hidden */
+.modal-container {
+  display: none; /* Hidden by default */
+}
+
+/* The Modal Container displayed at screen */
+.modal-container.show {
+  display: table;
+  z-index: 1; /* Sit on top */
+  position: fixed;
+  top: 25%;
+  transform: translateY(-20%);
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  margin: 0 auto;
+  border: 1px solid #888;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  overflow: auto; /* Enable scroll if needed */
+  animation-name: animateModal;
+  animation-duration: 0.4s;
+}
+
+ /* Modal Header */
+.modal-header {
+  padding: 2px 16px;
+  background: linear-gradient(160deg, #9cc5a3 0%, #2c8e8d 100%);
+  color: white;
+  text-align: center;
+  font-size: 1.6em;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 2px 16px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+/* Modal Button */
+.modal-button {
+  color: white;
+  background: #a84a50;
+  padding: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  font-size: 1.0em;
+}
+
+.modal-button:hover {
+  background: #da1318;
+  letter-spacing: 1px;
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.8s ease 0s;
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 2px 16px;
+  background: linear-gradient(160deg, #9cc5a3 0%, #2c8e8d 100%);
+  color: white;
+  text-align: center;
+  font-size: 1.0em;
 }

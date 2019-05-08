@@ -2,6 +2,10 @@
 const objectContainer = document.querySelector(".container");
 objectContainer.addEventListener('click', function () { eventListener(event) });
 
+// Adding event listener to modal Button
+const modalButton = document.querySelector(".modal-button");
+modalButton.addEventListener('click', function () { reload()});
+
 /*
  * Create a list that holds all of your cards
 * Will use list from https://www.ranker.com/crowdranked-list/the-best-rock-bands-of-all-time
@@ -20,8 +24,9 @@ let cardsClickedArray = [];
 // Array that will hold move counter value objects
 const moveValue = document.querySelector('.moves');
 
-// Variable that will hold number of movements
+// Variables that will hold number of movements and stars
 let numberOfMoves = 0;
+let numberOfStars = 3;
 
 // Array that will have document elements for all cards objects
 const cards = document.querySelectorAll('.image');
@@ -32,6 +37,11 @@ const clockValue = document.querySelector('.clock-value');
 // Initialize clock Variable as game is open
 let clockVar;
 let timeInSeconds = 0;
+
+// Constant reference to modal Window and elements
+const modalVar = document.querySelector('.modal-container');
+const modalClock = document.querySelector('.modal-clock');
+const modalStars = document.querySelector('.modal-stars');
 
 /*
  * Display the cards on the page
@@ -131,6 +141,8 @@ function reload() {
   stopClock();
   // run gameInit
   gameInit();
+  // Remove modalWindow
+  modalVar.classList.remove("show");
 }
 
 // Runs clock and updates clock text with minuntes:seconds (mm:ss)
@@ -162,6 +174,7 @@ function clock() {
   }
 
   clockValue.textContent = textMinutes + ":" + textSeconds;
+  modalClock.textContent = textMinutes + ":" + textSeconds;
 
 }
 
@@ -255,7 +268,10 @@ function cardMatched() {
     cardsOpened[0].classList.add("match");
     cardsOpened[0].classList.remove("open");
     if (checkWin()) {
+      // Stop clock
+      stopClock();
       //display modal window
+      modalVar.classList.add("show");
     }
   }
   else {
@@ -272,6 +288,27 @@ function cardMatched() {
 // Function to update move counter
 function updateMoveCounter() {
   moveValue.textContent = numberOfMoves;
+  updateNumberOfStars();
+}
+
+// Function to update number of stars
+function updateNumberOfStars() {
+  // If number of moves is from 0 to 20, 3 stars.
+  if (numberOfMoves <= 20) {
+    numberOfStars = 3;
+    modalStars.textContent = numberOfStars + ' stars';
+  }
+  // If number of moves is from 21 to 40, 2 stars. Update currently game
+  else if (numberOfMoves > 20 && numberOfMoves <= 40) {
+    numberOfStars = 2;
+    modalStars.textContent = numberOfStars + ' stars';
+  }
+  // If number of moves is bigger than 40, 1 star
+  else {
+    numberOfStars = 1;
+    modalStars.textContent = numberOfStars + ' star';
+  }
+  updateStarText();
 }
 
 // Function to reload card classes during game Initialization or reload
@@ -295,11 +332,44 @@ function checkWin() {
   let cardsMatched = document.getElementsByClassName("match");
   if (cardsMatched.length == 16) {
     // Won the game
-    console.log("You Won");
     return true;
   }
   else {
-    console.log("Keep playing");
+    // Keep playing
     return false;
+  }
+}
+
+// Function to update stars objects in HTML
+function updateStarText() {
+  // Get Star elements fa-star from the DOM
+  let starElements = document.getElementsByClassName("fa-star");
+  let starElementsFade = document.getElementsByClassName("fa-star-o");
+  // Check number of stars and proceed with update in star class
+  switch (numberOfStars) {
+    case 1:
+      if (starElements.length != 1) {
+        for (let i = starElements.length - 1; i >=1; i--) {
+          starElements[i].classList.add("fa-star-o");
+          starElements[i].classList.remove("fa-star");
+        }
+      }
+      break;
+    case 2:
+      if (starElements.length != 2) {
+        for (let i = starElements.length - 1; i >=2; i--) {
+          starElements[i].classList.add("fa-star-o");
+          starElements[i].classList.remove("fa-star");
+        }
+      }
+      break;
+    case 3:
+      if (starElementsFade.length != 0) {
+        for (let i = starElementsFade.length - 1; i >=0; i--) {
+          starElementsFade[i].classList.add("fa-star");
+          starElementsFade[i].classList.remove("fa-star-o");
+        }
+      }
+      break;
   }
 }

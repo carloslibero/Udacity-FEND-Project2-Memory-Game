@@ -41,16 +41,16 @@ Thus, the following actions were performed in this provided order:
 1. Added reload functionality
 1. Implemented game clock
 1. Added click functionalities
-  2. reload click
-  2. flip
-  2. flip animation (TBD)
-  2. unflip
-  2. matched
-  2. matched animation (TBD)
-  2. not matched
-  2. not matched animation (TBD)
-  2. Limit to two cards flipped only
-  2. Move counter
-1. Created game win condition and modal window (TBD)
-1. Implemented game stars logic (3 stars based on number of moves) (TBD)
-1. Adjusted responsive layout to small screens (TBD)
+    2. reload click
+    2. flip
+    2. flip animation (TBD)
+    2. unflip
+    2. matched
+    2. matched animation (TBD)
+    2. not matched
+    2. not matched animation (TBD)
+    2. Limit to two cards flipped only
+    2. Move counter
+1. Created game win condition and modal window
+1. Implemented game stars logic (3 stars based on number of moves)
+1. Adjusted responsive layout to small screens
