@@ -13,8 +13,8 @@
 
 /* Modal Animation */
 @keyframes animateModal {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
+  from {top: -300px; opacity: 0;}
+  to {top: 0; opacity: 1;}
 }
 
 html {
